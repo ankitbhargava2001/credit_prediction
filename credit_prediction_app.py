@@ -70,7 +70,7 @@ def preprocess_input(data):
 
 # Make prediction when button is clicked
 if st.button("Predict Credit Risk"):
-    if loaded_model is not None and loaded_scaler is not None:
+    if loaded_model is not None and scaler is not None:
         input_data = {
             'person_age': person_age,
             'person_income': person_income,
