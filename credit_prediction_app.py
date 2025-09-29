@@ -15,18 +15,22 @@ st.title("Credit Risk Prediction App")
 st.write("Enter the details below to predict credit risk.")
 
 # Get user input for features
-person_age = st.slider("Person Age", min_value=X['person_age'].min(), max_value=X['person_age'].max(), value=X['person_age'].mean())
-person_income = st.number_input("Person Income", min_value=X['person_income'].min(), max_value=X['person_income'].max(), value=X['person_income'].mean())
-person_emp_length = st.slider("Person Employment Length (Years)", min_value=X['person_emp_length'].min(), max_value=X['person_emp_length'].max(), value=X['person_emp_length'].mean())
-loan_amnt = st.number_input("Loan Amount", min_value=X['loan_amnt'].min(), max_value=X['loan_amnt'].max(), value=X['loan_amnt'].mean())
-loan_int_rate = st.slider("Loan Interest Rate", min_value=X['loan_int_rate'].min(), max_value=X['loan_int_rate'].max(), value=X['loan_int_rate'].mean())
-loan_percent_income = st.slider("Loan Percent of Income", min_value=X['loan_percent_income'].min(), max_value=X['loan_percent_income'].max(), value=X['loan_percent_income'].mean())
-cb_person_cred_hist_length = st.slider("Credit History Length (Years)", min_value=X['cb_person_cred_hist_length'].min(), max_value=X['cb_person_cred_hist_length'].max(), value=X['cb_person_cred_hist_length'].mean())
+person_age = st.number_input("Person Age", min_value=0)
+person_income = st.number_input("Person Income", min_value=0)
+person_emp_length = st.number_input("Person Employment Length (Years)", min_value=0.0)
+loan_grade = st.selectbox("Loan Grade (0-6)", options=[0, 1, 2, 3, 4, 5, 6]) # Assuming loan_grade is label encoded 0-6
+loan_amnt = st.number_input("Loan Amount", min_value=0)
+loan_int_rate = st.number_input("Loan Interest Rate", min_value=0.0)
+loan_percent_income = st.number_input("Loan Percent of Income", min_value=0.0)
+cb_person_default_on_file = st.selectbox("Default on File (Y/N)", options=['N', 'Y'])
+cb_person_cred_hist_length = st.number_input("Credit History Length (Years)", min_value=0)
+person_home_ownership = st.selectbox("Home Ownership", options=['RENT', 'OWN', 'MORTGAGE', 'OTHER'])
 
-person_home_ownership = st.selectbox("Home Ownership", ['RENT', 'OWN', 'MORTGAGE', 'OTHER'])
+
+
 loan_intent = st.selectbox("Loan Intent", ['PERSONAL', 'EDUCATION', 'MEDICAL', 'VENTURE', 'HOMEIMPROVEMENT', 'DEBTCONSOLIDATION'])
-loan_grade = st.selectbox("Loan Grade", ['A', 'B', 'C', 'D', 'E', 'F', 'G'])
-cb_person_default_on_file = st.selectbox("Default on File", ['Y', 'N'])
+
+
 
 
 # Create a dictionary from user input
