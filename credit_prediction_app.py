@@ -4,7 +4,7 @@ import pandas as pd
 
 # Load the scaler and model
 try:
-    scaler = joblib.load('scaler.pkl')
+    loaded_scaler = joblib.load('scaler.pkl')
     loaded_model = joblib.load('xgboost_model.pkl')
 except FileNotFoundError:
     st.error("Error: scaler.pkl or xgboost_model.pkl not found. Please ensure you have trained and saved the scaler and model.")
@@ -70,7 +70,7 @@ def preprocess_input(data):
 
 # Make prediction when button is clicked
 if st.button("Predict Credit Risk"):
-    if loaded_model is not None and scaler is not None:
+    if loaded_model is not None and loaded_scaler is not None:
         input_data = {
             'person_age': person_age,
             'person_income': person_income,
