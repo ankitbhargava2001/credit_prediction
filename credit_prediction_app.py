@@ -5,7 +5,7 @@ import pandas as pd
 # Load the scaler and model
 try:
     scaler = joblib.load('scaler.pkl')
-    xgb_model = joblib.load('xgboost_model.pkl')
+    loaded_model = joblib.load('xgboost_model.pkl')
 except FileNotFoundError:
     st.error("Error: scaler.pkl or xgboost_model.pkl not found. Please ensure you have trained and saved the scaler and model.")
     st.stop()
